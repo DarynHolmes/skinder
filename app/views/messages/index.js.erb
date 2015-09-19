@@ -1,1 +1,4 @@
-$("#display-list").prepend("<%= j render @messages %>");
+var message = $("<%= j render @messages %>");
+message.hide();
+$("#display-list").prepend(message);
+message.slideDown();

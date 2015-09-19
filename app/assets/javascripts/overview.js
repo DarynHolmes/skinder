@@ -17,12 +17,13 @@ function updateMessages() {
 
 function tick(count) {
   if (count <= 0) {
-    $("#timer").html("Updating now");
+    // $("#timer").html("Updating now");
     updateMessages();
     count = 5;
   } else {
-    $("#timer").html("Updating in " + count);
+    // $("#timer").html("Updating in " + count);
     count--;
   }
+  // console.log("Updating in " + count);
   setTimeout(function() { tick(count); }, 1000);
 }
