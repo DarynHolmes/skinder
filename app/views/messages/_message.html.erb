@@ -1,5 +1,6 @@
 <div class="comment" data-time="<%= message.created_at.to_i %>">
-  <%= message.body %>
+  <span><%= image_tag avatar_url(message) %></span>
+  <span><%= message.body %></span>
 </div>
 <hr />
     

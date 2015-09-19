@@ -1,9 +1,22 @@
 $(document).on('ready page:load', function () {
   console.log("Page load")
-  if ($("#commentary").length > 0){
-  	tick(0);
-  }
+  
+  setupCommentForm();
+  tick(0);
 });
+
+function setupCommentForm() {
+  if ($("#new_message").length > 0) {
+    submit = $('input[name="commit"]')
+    submit.attr('disabled',true);
+    $('#message_body').keyup(function(){
+        if($(this).val().length !=0)
+            submit.attr('disabled', false);            
+        else
+            submit.attr('disabled',true);
+    });
+  }
+}
 
 
 function updateMessages() {
@@ -16,14 +29,16 @@ function updateMessages() {
 }
 
 function tick(count) {
-  if (count <= 0) {
-    // $("#timer").html("Updating now");
-    updateMessages();
-    count = 1;
-  } else {
-    // $("#timer").html("Updating in " + count);
-    count--;
+  if ($("#commentary").length > 0){
+    if (count <= 0) {
+      // $("#timer").html("Updating now");
+      updateMessages();
+      count = 1;
+    } else {
+      // $("#timer").html("Updating in " + count);
+      count--;
+    }
+    // console.log("Updating in " + count);
+    setTimeout(function() { tick(count); }, 1000);
   }
-  // console.log("Updating in " + count);
-  setTimeout(function() { tick(count); }, 1000);
 }
