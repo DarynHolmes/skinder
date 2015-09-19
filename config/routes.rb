@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'static#overview'
+  root 'dashboard#index'
   get 'messages' => 'messages#index'
+  post 'messages' => 'messages#create'
+  get 'commentary' => 'static#commentary'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

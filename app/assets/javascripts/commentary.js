@@ -1,6 +1,6 @@
 $(document).on('ready page:load', function () {
   console.log("Page load")
-  if ($("#display-list").length > 0){
+  if ($("#commentary").length > 0){
   	tick(0);
   }
 });
@@ -19,7 +19,7 @@ function tick(count) {
   if (count <= 0) {
     // $("#timer").html("Updating now");
     updateMessages();
-    count = 5;
+    count = 1;
   } else {
     // $("#timer").html("Updating in " + count);
     count--;
