@@ -1,10 +1,11 @@
 class MessagesController < ApplicationController
 
   def create
-    @message = Message.new(message_params)
+    @event = Event.find(params[:event_id])
+    @message = @event.messages.new(message_params)
+    @event.save
 
-    respond_to do |format|
-      @message.save
+    respond_to do |format|    
       format.js   { }
     end
   end
@@ -12,9 +13,11 @@ class MessagesController < ApplicationController
   def index
     if (params.has_key?(:after))
       time_of_latest_message = Time.at(params[:after].to_i + 1)
-      @messages = Message.order(created_at: :desc).where("created_at > ?", time_of_latest_message)
+      event = Event.find(params[:event_id])
+
+      @messages = event.messages.order(created_at: :desc).where("created_at > ?", time_of_latest_message)
     else
-      @messages = Message.order(created_at: :desc)
+      @messages = event.messages.order(created_at: :desc)
     end
     respond_to do |format|
       format.js

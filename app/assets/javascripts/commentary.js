@@ -21,11 +21,12 @@ function setupCommentForm() {
 
 function updateMessages() {
   var latest_comment = $(".comment:first-child")
+  var event_id = $("#commentary").attr("data-event");
   var after = new Date("2010-01-01");
   if(latest_comment.length > 0) {
     after = latest_comment.attr("data-time");
   }
-	$.getScript("/messages.js?after=" + after); // Executes the script when it is returned
+	$.getScript("/events/"+event_id+"/messages.js?after=" + after); // Executes the script when it is returned
 }
 
 function tick(count) {
