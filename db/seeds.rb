@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(name: "admin", email: "DarynHolmes@gmail.com", password: "admin@2015")
+
 tiy_event = Event.create(name: "TIY", code: "tiy", image_url: "http://theironyard.com/images/home/tiy-logo.png")
 meetup_event = Event.create(name: "Agile Practitioners", code: "meetup")
 other_event = Event.create(name: "Other", code: "other")

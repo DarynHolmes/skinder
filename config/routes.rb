@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
-  root  'static#home'
-  post  'events/join' => 'events#join', as: :join_event
-  get   'events/:event_code'  => 'events#show', as: :event
-  get   'events/:event_code/display'  => 'events#display', as: :display_event
-  post   'events/:event_code/messages' => 'messages#create', as: :event_messages
-  get   'events/:event_code/messages' => 'messages#index'
+  root    'static#home'
+
+  post    'events/create' => 'events#create', as: :create_event
+  get     'events'=> 'events#index', as: :events
+  post    'events/join' => 'events#join', as: :join_event
+  get     'events/:event_code'  => 'events#show', as: :event
+  get     'events/:event_code/display'  => 'events#display', as: :display_event
+  post    'events/:event_code/messages' => 'messages#create', as: :event_messages
+  get     'events/:event_code/messages' => 'messages#index'
+
+  get     'login'   => 'sessions#new'
+  post    'login'   => 'sessions#create'
+  delete  'logout'  => 'sessions#destroy'
 
   # post  'messages' => 'messages#create'
   # get   'commentary' => 'static#commentary'
