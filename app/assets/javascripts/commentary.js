@@ -40,6 +40,6 @@ function tick(count) {
       count--;
     }
     // console.log("Updating in " + count);
-    setTimeout(function() { tick(count); }, 5000); // milliseconds
+    // setTimeout(function() { tick(count); }, 5000); // milliseconds
   }
 }
