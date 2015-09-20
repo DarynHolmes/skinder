@@ -16,3 +16,24 @@
  */
 
 #event-header { padding-left: 40px; }
+
+/* vertical align text, specifically comments */
+/*@media (max-width: 767px) {
+  .vertical-align {
+    margin-top: 0;
+  }
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}*/
+
+/* Vertical align messages */
+/* http://stackoverflow.com/questions/20547819/vertical-align-with-bootstrap-3 */
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+

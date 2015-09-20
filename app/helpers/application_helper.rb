@@ -11,8 +11,10 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=identicon"
   end
 
-  # def event_header(event)
-  #   content_for :event_header, link_to("#{event.name}", event_path(event.code), class: "navbar-brand")
-  # end
+  def markdown(content)
+    options = [hard_wrap: true, filter_html: true, autolink: true, no_intraemphasis: true, space_after_headers: true, fenced_code_blocks: true, gh_blockcode: true]
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, *options)
+    @markdown.render(content).html_safe
+  end
 
 end
