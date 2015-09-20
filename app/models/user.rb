@@ -1,4 +1,15 @@
-require_dependency 'app/validators/email_validator.rb'
+# require_dependency 'app/validators/email_validator.rb'
+# https://developer.salesforce.com/forums/?id=906F00000008tJpIAI require 'EmailValidator' 
+
+class EmailValidator < ActiveModel::EachValidator
+
+  def validate_each(record, attribute, value)
+    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      record.errors[attribute] << (options[:message] || "is not an email")
+    end
+  end
+
+end
 
 class User < ActiveRecord::Base
   before_save :downcase_email
