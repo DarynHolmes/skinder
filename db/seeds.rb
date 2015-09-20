@@ -6,13 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Message.create([{ body: 'This is going well' }, 
-				{ body: 'I am enjoying the class', username: "Bob" },
-				{ body: 'Ruby is a very productive language to be using!', username: "Daryn", email: "DarynHolmes@gmail.com"},
-        { body: 'Can I use this user name?', username: "Sue" },
-        { body: 'How can I do that?', username: "fake", email: "fake@fake.com" },
-        { body: 'Was this asked before?', username: "Sue" },
-        { body: 'Ruby is a very productive language to be using!', username: "Daryn", email: "DarynHolmes@gmail.com"},
-        { body: 'Can I use this user name?', username: "Mark" },
-        { body: 'Ruby a good choice...', username: "Mark", email: "mark@gmail.com"},
-        { body: 'Was this home made?', username: "Clair", email: "clair@underwoord" },])
+tiy_event = Event.create(name: "TIY", code: "tiy", image_url: "http://theironyard.com/images/home/tiy-logo.png")
+meetup_event = Event.create(name: "Agile Practitioners", code: "meetup")
+other_event = Event.create(name: "Other", code: "other")
+
+Message.create(event: tiy_event, body: 'I am enjoying the class', username: "Bob")
+Message.create(event: tiy_event, body: 'Ruby is a very productive language to be using!', username: "Daryn", email: "DarynHolmes@gmail.com")
+Message.create(event: tiy_event, body: 'Can I use this user name?', username: "Sue")
+Message.create(event: tiy_event, body: 'How can I do that?', username: "fake", email: "fake@fake.com")
+Message.create(event: tiy_event, body: 'Was this asked before?', username: "Sue")
+Message.create(event: tiy_event, body: 'Ruby is a very productive language to be using!', username: "Daryn", email: "DarynHolmes@gmail.com")
+
+Message.create(event: meetup_event, body: 'Can I use this user name?', username: "Mark")

@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  root 'dashboard#index'
-  get 'messages' => 'messages#index'
-  post 'messages' => 'messages#create'
-  get 'commentary' => 'static#commentary'
+  root  'static#home'
+  post  'events/join' => 'events#join', as: :join_event
+  get   'events/:event_code'  => 'events#show', as: :event
+  get   'events/:event_code/display'  => 'events#display', as: :display_event
+  post   'events/:event_code/messages' => 'messages#create', as: :event_messages
+  get   'events/:event_code/messages' => 'messages#index'
+
+  # post  'messages' => 'messages#create'
+  # get   'commentary' => 'static#commentary'
+  # get   'dashboard' => 'dashboard#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

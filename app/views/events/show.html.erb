@@ -1,0 +1,23 @@
+<% content_for :event_header, render(partial: "shared/event_header", locals: {event: @event})  %>
+
+<div class="row">
+<%= form_for([@event, @message], url: event_messages_path(@event.code), remote: true, html: {class: "form col-md-6"}) do |f| %>
+    <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.text_area :body, rows: 3, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.submit "Comment", class: "btn btn-default pull-right" %>
+    </div>
+  <% end %>
+</div>
+
+<br />
+<div id="commentary" data-event="<%= @event.code %>">

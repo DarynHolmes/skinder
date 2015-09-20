@@ -21,11 +21,12 @@ function setupCommentForm() {
 
 function updateMessages() {
   var latest_comment = $(".comment:first-child")
-  var after = new Date("2010-01-01");
+  var event_code = $("#commentary").attr("data-event");
+  var after = new Date("2010-01-01"); // defaults to a non-specific, old date
   if(latest_comment.length > 0) {
     after = latest_comment.attr("data-time");
   }
-	$.getScript("/messages.js?after=" + after); // Executes the script when it is returned
+	$.getScript("/events/"+event_code+"/messages.js?after=" + after); // Executes the script when it is returned
 }
 
 function tick(count) {
@@ -39,6 +40,6 @@ function tick(count) {
       count--;
     }
     // console.log("Updating in " + count);
-    setTimeout(function() { tick(count); }, 1000);
+    setTimeout(function() { tick(count); }, 5000); // milliseconds
   }
 }

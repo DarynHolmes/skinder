@@ -1,0 +1,6 @@
+<% if event.image_url.present? %>
+  <!-- <a href="#" class="pull-left"><img src="/path/to/image.png"></a> -->
+  <%= link_to(image_tag(event.image_url, height: "48"), event_path(event.code), class: "pull-left") %>
+<% end %>
+ 
+<%= link_to("#{event.name}", event_path(event.code), id: "event-header", class: "navbar-brand") %>
