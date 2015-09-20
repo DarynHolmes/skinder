@@ -11,4 +11,8 @@ module ApplicationHelper
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=48&d=identicon"
   end
 
+  # def event_header(event)
+  #   content_for :event_header, link_to("#{event.name}", event_path(event.code), class: "navbar-brand")
+  # end
+
 end

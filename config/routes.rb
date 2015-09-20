@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root  'static#home'
   post  'events/join' => 'events#join', as: :join_event
-  get   'events/:id'  => 'events#show', as: :event
-  post   'events/:event_id/messages' => 'messages#create', as: :event_messages
+  get   'events/:event_code'  => 'events#show', as: :event
+  get   'events/:event_code/display'  => 'events#display', as: :display_event
+  post   'events/:event_code/messages' => 'messages#create', as: :event_messages
+  get   'events/:event_code/messages' => 'messages#index'
 
-  get   'events/:event_id/messages' => 'messages#index'
   # post  'messages' => 'messages#create'
-  get   'commentary' => 'static#commentary'
+  # get   'commentary' => 'static#commentary'
   # get   'dashboard' => 'dashboard#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

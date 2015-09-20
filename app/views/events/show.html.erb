@@ -1,8 +1,7 @@
-
-<%= image_tag(@event.image_url, width: '48') %>
+<% content_for :event_header, render(partial: "shared/event_header", locals: {event: @event})  %>
 
 <div class="row">
-<%= form_for([@event, @message], remote: true, html: {class: "form col-md-6"}) do |f| %>
+<%= form_for([@event, @message], url: event_messages_path(@event.code), remote: true, html: {class: "form col-md-6"}) do |f| %>
     <div class="form-group">
         <%= f.label :email %>
         <%= f.text_field :email, class: 'form-control' %>
@@ -21,6 +20,4 @@
 </div>
 
 <br />
-<h3>Commentary</h3>
-  <div id="commentary" data-event="<%= @event.id %>">
-</div>
+<div id="commentary" data-event="<%= @event.code %>">
