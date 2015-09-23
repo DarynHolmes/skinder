@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get     'events/:event_code/display'  => 'events#display', as: :display_event
   post    'events/:event_code/messages' => 'messages#create', as: :event_messages
   get     'events/:event_code/messages' => 'messages#index'
+  get     'events/:event_code/messages/:id' => 'messages#show', as: :event_message
 
   get     'login'   => 'sessions#new'
   post    'login'   => 'sessions#create'
