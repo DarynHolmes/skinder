@@ -1,7 +1,7 @@
 <div class="comment row" data-time="<%= message.created_at.to_i %>">
   <div class="col-xs-1 vcenter"  ><%= image_tag avatar_url(message) %></div><!--
     -->
-  <div class="col-xs-9 vcenter"><%= markdown message.body %></div>
+  <div class="col-xs-9 vcenter"><%= markdown(h(message.body)) %></div>
 </div>
 <hr />
     
