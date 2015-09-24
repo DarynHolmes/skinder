@@ -1,4 +1,16 @@
 var message = $("<%= j render @messages %>");
+message.find(".speech").on('click', function(e){
+
+ // alert("hi"); 
+
+  var $link = $(this);
+  var message = $link.attr("data-speech");
+  console.log(message);
+  var msg = new SpeechSynthesisUtterance(message);
+  window.speechSynthesis.speak(msg);
+  return false;
+
+});
 message.hide();
 $("#commentary").prepend(message);
 message.slideDown();
