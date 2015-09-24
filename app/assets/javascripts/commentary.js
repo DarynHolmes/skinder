@@ -1,8 +1,8 @@
 $(document).on('ready page:load', function () {
-  console.log("Page load")
-  
+  // console.log("Page load")
+  window.globCounter = 0;
   setupCommentForm();
-  tick(0);
+  tick();
 });
 
 function setupCommentForm() {
@@ -29,17 +29,17 @@ function updateMessages() {
 	$.getScript("/events/"+event_code+"/messages.js?after=" + after); // Executes the script when it is returned
 }
 
-function tick(count) {
+function tick() {
   if ($("#commentary").length > 0){
-    if (count <= 0) {
+    if (window.globCounter <= 0) {
       // $("#timer").html("Updating now");
       updateMessages();
-      count = 1;
+      window.globCounter = 5;
     } else {
       // $("#timer").html("Updating in " + count);
-      count--;
+      window.globCounter--;
     }
     // console.log("Updating in " + count);
-    setTimeout(function() { tick(count); }, 4000); // milliseconds
+    setTimeout(function() { tick(); }, 1000); // milliseconds
   }
 }
